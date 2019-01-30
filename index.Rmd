@@ -1,0 +1,151 @@
+---
+title: "Les élus nationaux"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(readr)
+library(tricky)
+library(reshape2)
+library(ggplot2)
+library(forcats)
+library(lubridate)
+library(stringr)
+
+library(flexdashboard)
+library(plotly)
+
+table_maires <- read_tsv(
+  file = "9-rne-maires.txt", 
+  skip = 1, 
+  locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  set_standard_names()
+```
+
+Maires
+=====================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Nombre d'hommes maires
+
+```{r}
+nombre_maires_hommes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_maires_femmes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_maires_hommes <- nombre_maires_hommes / (nombre_maires_hommes + nombre_maires_femmes)
+taux_maires_femmes <- nombre_maires_femmes / (nombre_maires_hommes + nombre_maires_femmes)
+
+nombre_maires_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont maires, soit",
+    format(
+      round(taux_maires_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff')
+```
+
+### Prénoms des hommes maires
+```{r}
+graphique_maires_hommes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(
+        .f = prenom_de_l_elu,
+        .x = n,
+        desc = FALSE
+      ),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(
+    name = "Prénom",
+    aesthetics = aes(fill = 'blue'),
+    labels = "Prénom"
+  ) +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Prénoms les plus fréquents chez les maires hommes", 
+    caption = "10 premiers prénoms"
+  )
+ggplotly(graphique_maires_hommes)
+```
+
+
+### Nombre de femmes maires
+
+```{r}
+nombre_maires_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont maires, soit",
+    format(
+      round(taux_maires_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f')
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Nos maires s'appellent Michel
+
+```{r}
+table_maires_nombre_maires_prenom <-
+  table_maires %>% count(prenom_de_l_elu, sort = TRUE)
+table_maires_nombre_maires_prenom %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE), y = n)
+  ) + 
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") + 
+  scale_y_continuous(name = "Nombre de maires") + 
+  labs(
+    title = "Prénoms de maires les plus répandus", 
+    caption = "Les 20 prénoms de maires les plus répandus"
+  )
+```
+
+### Chart C
+
+```{r}
+
+```
+
+### L'âge des députés
+
+```{r}
+
+```
+
