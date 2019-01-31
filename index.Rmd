@@ -3,6 +3,7 @@ title: "Les élus nationaux"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
+    storyboard: true
     vertical_layout: fill
 ---
 
@@ -22,19 +23,17 @@ library(plotly)
 table_maires <- read_tsv(
   file = "9-rne-maires.txt", 
   skip = 1, 
-  locale = locale(encoding = "ISO-8859-1")
-  ) %>%
-  set_standard_names()
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
 ```
 
-Maires
-=====================================
+Maires {.storyboard}
+=========================================
 
-Column {.tabset .tabset-fade}
------------------------------------------------------------------------
-
-### Nombre d'hommes maires
-
+### Nombre de maires hommes
 ```{r}
 nombre_maires_hommes <- table_maires %>%
   count(code_sexe) %>%
@@ -46,6 +45,22 @@ nombre_maires_femmes <- table_maires %>%
   pull(n)
 taux_maires_hommes <- nombre_maires_hommes / (nombre_maires_hommes + nombre_maires_femmes)
 taux_maires_femmes <- nombre_maires_femmes / (nombre_maires_hommes + nombre_maires_femmes)
+
+table_maires <- table_maires %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_maires %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_maires %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
 
 nombre_maires_hommes %>%
   format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
@@ -59,45 +74,14 @@ nombre_maires_hommes %>%
     ),
     "%",
     sep = ' '
-  ), color = '#007fff')
+  ), color = '#007fff', icon = 'fa-male')
 ```
 
-### Prénoms des hommes maires
-```{r}
-graphique_maires_hommes <- table_maires %>% 
-  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
-  filter(code_sexe == 'M') %>%
-  slice(1:10) %>%
-  ggplot() +
-  geom_col(
-    mapping = aes(
-      x = fct_reorder(
-        .f = prenom_de_l_elu,
-        .x = n,
-        desc = FALSE
-      ),
-      y = n,
-      fill = 'blue'
-    ),
-    show.legend = FALSE
-  ) +
-  coord_flip() +
-  scale_x_discrete(
-    name = "Prénom",
-    aesthetics = aes(fill = 'blue'),
-    labels = "Prénom"
-  ) +
-  scale_y_continuous(name = "Nombre d'élus") +
-  labs(
-    title = "Prénoms les plus fréquents chez les maires hommes", 
-    caption = "10 premiers prénoms"
-  )
-ggplotly(graphique_maires_hommes)
-```
+***
+L'âge moyen d'un maire homme est égal à 62,2 ans. Le plus âgé a actuellement 96 ans
+(<i>le 31 janvier 2019</i>).
 
-
-### Nombre de femmes maires
-
+### Nombre de maires femmes
 ```{r}
 nombre_maires_femmes %>%
   format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
@@ -111,41 +95,111 @@ nombre_maires_femmes %>%
     ),
     "%",
     sep = ' '
-  ), color = '#ff007f')
+  ), color = '#ff007f', icon = 'fa-female')
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+***
+L'âge moyen d'une maire femme est égal à 60,3 ans. La plus âgée a actuellement 90 ans
+(<i>le 31 janvier 2019</i>).
 
-### Nos maires s'appellent Michel
+### Prénoms des hommes maires
+```{r}
+graphique_maires_hommes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Prénoms les plus fréquents chez les maires hommes", 
+    caption = "10 premiers prénoms"
+  )
+ggplotly(graphique_maires_hommes)
+```
+
+### Prénoms des femmes maires
+```{r}
+graphique_maires_femmes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Prénoms les plus fréquents chez les maires femmes", 
+    caption = "10 premiers prénoms"
+  )
+ggplotly(graphique_maires_femmes)
+```
+
+### Départements avec le plus de maires
 
 ```{r}
-table_maires_nombre_maires_prenom <-
-  table_maires %>% count(prenom_de_l_elu, sort = TRUE)
-table_maires_nombre_maires_prenom %>%
+graphique_maires_professions <- table_maires %>% 
+  count(libelle_de_departement_maires_, sort = TRUE) %>%
   slice(1:20) %>%
   ggplot() +
   geom_col(
-    mapping = aes(x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE), y = n)
-  ) + 
+    mapping = aes(
+      x = libelle_de_departement_maires_,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
   coord_flip() +
-  scale_x_discrete(name = "Prénom") + 
-  scale_y_continuous(name = "Nombre de maires") + 
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
   labs(
-    title = "Prénoms de maires les plus répandus", 
-    caption = "Les 20 prénoms de maires les plus répandus"
+    title = "Départements avec le plus de maires", 
+    caption = "20 premiers départements"
   )
+ggplotly(graphique_maires_professions)
 ```
 
-### Chart C
+***
+On voit bien que la Seine-Maritime (76) et l'Aisne (02) sont les départements qui ont le
+plus de maires. Ceux de la petite couronne de l'Île-de-France (Seine-Saint-Denis, Hauts-de-Seine, Val-de-Marne), les départements d'outre-mer et le département de Paris sont ceux qui ont le moins de maires (moins de 50 maires).
+
+### Professions exercées par les maires
 
 ```{r}
-
+graphique_maires_professions <- table_maires %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_de_la_profession,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Professions les plus exercées par les maires", 
+    caption = "20 premières professions"
+  )
+ggplotly(graphique_maires_professions)
 ```
-
-### L'âge des députés
-
-```{r}
-
-```
-
