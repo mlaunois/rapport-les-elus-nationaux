@@ -1,0 +1,73 @@
+---
+title: "Les élus nationaux"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    source_code: 'https://github.com/mlaunois/rapport-nos-elus-nationaux'
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(readr)
+library(tricky)
+library(flexdashboard)
+
+table_maires <- read_tsv(
+  file = "9-rne-maires.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+table_deputes <- read_tsv(
+  file = "8-rne-deputes.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+table_senateurs <- read_tsv(
+  file = "7-rne-senateurs.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+```
+
+Row
+------------------
+
+### Rapport sur les maires
+```{r}
+table_maires %>%
+  count() %>%
+  pull(n) %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = "maires", color = '#ff0000',
+           href = 'rapport-rne-maires.html')
+```
+
+### Rapport sur les députés
+```{r}
+table_deputes %>%
+  count() %>%
+  pull(n) %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = "députés", color = '#007fff',
+           href = 'rapport-rne-deputes.html')
+```
+
+### Rapport sur les sénateurs
+```{r}
+table_senateurs %>%
+  count() %>%
+  pull(n) %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = "sénateurs", color = '#ff7f00',
+           href = 'rapport-rne-senateurs.html')
+```

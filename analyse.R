@@ -6,6 +6,13 @@ library(ggplot2)
 library(forcats)
 library(lubridate)
 
+table_maires %>%
+  count(code_du_departement_maire_, age, sort = TRUE) %>%
+  group_by(code_du_departement_maire_) %>%
+  summarize(
+    age_moyen = mean(age)
+  )
+
 table_maires <- read_tsv(
   file = "9-rne-maires.txt", 
   skip = 1, 

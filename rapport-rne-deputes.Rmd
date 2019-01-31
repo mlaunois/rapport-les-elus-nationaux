@@ -1,0 +1,222 @@
+---
+title: "Les députés"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    source_code: 'https://github.com/mlaunois/rapport-nos-elus-nationaux'
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(readr)
+library(tricky)
+library(ggplot2)
+library(lubridate)
+library(stringr)
+
+library(flexdashboard)
+
+table_deputes <- read_tsv(
+  file = "8-rne-deputes.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+```
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_deputes_hommes <- table_deputes %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_deputes_femmes <- table_deputes %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_deputes_hommes <- nombre_deputes_hommes / (nombre_deputes_hommes + nombre_deputes_femmes)
+taux_deputes_femmes <- nombre_deputes_femmes / (nombre_deputes_hommes + nombre_deputes_femmes)
+
+table_deputes <- table_deputes %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_deputes %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_deputes %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_deputes_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont députés, soit",
+    format(
+      round(taux_deputes_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_deputes_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont députées, soit",
+    format(
+      round(taux_deputes_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Petite anecdote
+
+Saviez-vous que le député le plus vieux a 80 ans ? Et que la moyenne d'âge est estimée à 50 ans ?
+
+Row
+------------------
+
+### Comment s'appellent nos députés ?
+```{r}
+graphique_deputes_hommes <- table_deputes %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les députés hommes"
+  )
+print(graphique_deputes_hommes)
+```
+
+### Quels sont les noms les plus prisés parmi les députées ?
+```{r}
+graphique_deputes_femmes <- table_deputes %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les députées femmes"
+  )
+print(graphique_deputes_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de députés
+
+```{r}
+graphique_deputes_departements <- table_deputes %>% 
+  count(libelle_du_departement, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_du_departement,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de députés", 
+    caption = "Sans surprise, les départements du Nord et de Paris\n
+    ont le plus grand nombre de députés, avec respectivement 21\n
+    et 18 députés. Mais la Creuse, la Lozère et trois\n
+    départements d'outre-mer ont le moins de députés avec\n
+    seulement un député ! Alors qu'il y a en moyenne 5,35 députés\n
+    par département français, seuls 37 sont au-dessus de cette moyenne !"
+  )
+print(graphique_deputes_departements)
+```
+
+### Professions exercées par les députés
+
+```{r}
+graphique_deputes_professions <- table_deputes %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_de_la_profession,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premières professions les plus exercées par les députés", 
+    caption = "Les cadres du secteur privé, les fonctionnaires de catégorie\n
+    A et les industriels et chefs d'entreprise sont les plus nombreux\n
+    parmi les députés, et occupent 31 % des 577 existants en France."
+  )
+print(graphique_deputes_professions)
+```
+
+Row
+------------------
+
+### Liens
+
+[Retour à l'accueil du rapport](rapport-rne.html)
+
+[Page sur les maires](rapport-rne-maires.html)
+
+[Page sur les sénateurs](rapport-rne-senateurs.html)

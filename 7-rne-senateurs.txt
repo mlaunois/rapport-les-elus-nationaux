@@ -1,0 +1,350 @@
+Titre du rapport
+Code du département	Libellé du département	Nom de l'élu	Prénom de l'élu	Code sexe	Date de naissance	Code profession	Libellé de la profession	Date de début du mandat
+01	AIN	CHAIZE	Patrick	M	22/3/1963	56	Autres professions	1/10/2014
+01	AIN	GOY-CHAVENT	Sylvie	F	23/5/1963	42	Professeurs du secondaire et techn.	1/10/2014
+01	AIN	MAZUIR	Rachel	M	12/2/1940	62	Retraités de l'enseignement	1/10/2014
+02	AISNE	DAUDIGNY	Yves	M	23/2/1947	62	Retraités de l'enseignement	1/10/2014
+02	AISNE	GRUNY	Pascale	F	18/2/1960	19	Autres cadres (secteur privé)	1/10/2014
+02	AISNE	LEFEVRE	Antoine	M	18/2/1966	57	Sans profession déclarée	1/10/2014
+03	ALLIER	DERIOT	Gérard	M	1/11/1944	60	Retraités des professions libérales	1/10/2014
+03	ALLIER	MALHURET	Claude	M	8/3/1950	24	Médecins	1/10/2014
+04	ALPES DE HAUTE PROVENCE	ROUX	Jean-Yves	M	18/1/1970	14	Agents technique et techniciens	1/10/2014
+05	HAUTES ALPES	MORHET-RICHAUD	Patricia	F	28/7/1961	20	Employés (secteur privé)	28/12/2014
+06	ALPES MARITIMES	DAUNIS	Marc	M	22/4/1955	42	Professeurs du secondaire et techn.	1/10/2014
+06	ALPES MARITIMES	ESTROSI-SASSONE	Dominique	F	14/11/1958	57	Sans profession déclarée	1/10/2014
+06	ALPES MARITIMES	GIUDICELLI	Colette	F	24/11/1943	57	Sans profession déclarée	1/10/2014
+06	ALPES MARITIMES	LELEUX	Jean-Pierre	M	8/5/1947	13	Ingénieurs	1/10/2014
+06	ALPES MARITIMES	LEROY	Henri	M	31/3/1945	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+07	ARDECHE	DARNAUD	Mathieu	M	11/7/1975	57	Sans profession déclarée	1/10/2014
+07	ARDECHE	GENEST	Jacques	M	6/8/1950	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+08	ARDENNES	HURE	Benoît	M	5/6/1953	01	Agriculteurs propriétaires exploit.	1/10/2014
+08	ARDENNES	LAMENIE	Marc	M	11/7/1956	56	Autres professions	1/10/2014
+09	ARIEGE	DURAN	Alain	M	2/1/1958	43	Enseignants 1er deg.-directeurs école	1/10/2014
+10	AUBE	ADNOT	Philippe	M	25/8/1945	01	Agriculteurs propriétaires exploit.	1/10/2014
+10	AUBE	PERROT	Evelyne	F	22/6/1951	57	Sans profession déclarée	17/12/2017
+11	AUDE	COURTEAU	Roland	M	24/2/1943	62	Retraités de l'enseignement	1/10/2014
+11	AUDE	JOURDA	Gisèle	F	24/3/1955	47	Fonctionnaires de catégorie A	1/10/2014
+12	AVEYRON	LUCHE	Jean-Claude	M	7/8/1952	19	Autres cadres (secteur privé)	1/10/2014
+12	AVEYRON	MARC	Alain	M	29/1/1957	62	Retraités de l'enseignement	1/10/2014
+13	BOUCHES DU RHONE	AMIEL	Michel	M	3/7/1954	24	Médecins	1/10/2014
+13	BOUCHES DU RHONE	BERTRAND	Anne-Marie	F	27/11/1942	58	Retraités agricoles	1/10/2014
+13	BOUCHES DU RHONE	GHALI	Samia	F	10/6/1968	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+13	BOUCHES DU RHONE	GILLES	Bruno	M	26/12/1960	57	Sans profession déclarée	1/10/2014
+13	BOUCHES DU RHONE	GUERINI	Jean-Noël	M	1/1/1951	56	Autres professions	1/10/2014
+13	BOUCHES DU RHONE	JOISSAINS	Sophie	F	25/10/1969	18	Cadres supérieurs (secteur privé)	1/10/2014
+13	BOUCHES DU RHONE	JOUVE	Mireille	F	30/12/1960	43	Enseignants 1er deg.-directeurs école	1/10/2014
+13	BOUCHES DU RHONE	RAVIER	Stéphane	M	4/8/1969	52	Employés (autres entrep. publiques)	1/10/2014
+14	CALVADOS	ALLIZARD	Pascal	M	19/12/1962	51	Cadres (entreprises publiques)	1/10/2014
+14	CALVADOS	DE LA PROVOTE	Sonia	F	25/12/1968	23	Salariés du secteur médical	1/10/2017
+14	CALVADOS	FERET	Corinne	F	17/9/1961	48	Fonctionnaires de catégorie B	11/6/2015
+15	CANTAL	DELCROS	Bernard	M	12/2/1953	42	Professeurs du secondaire et techn.	6/9/2015
+15	CANTAL	MEZARD	Jacques	M	3/12/1947	60	Retraités des professions libérales	1/10/2014
+16	CHARENTE	BONNEFOY	Nicole	F	11/8/1958	54	Permanents politiques	1/10/2014
+16	CHARENTE	BOUTANT	Michel	M	23/11/1956	42	Professeurs du secondaire et techn.	1/10/2014
+17	CHARENTE MARITIME	IMBERT	Corinne	F	20/11/1958	28	Pharmaciens	1/10/2014
+17	CHARENTE MARITIME	LALANDE	Bernard	M	6/4/1954	34	Experts comptables	1/10/2014
+17	CHARENTE MARITIME	LAURENT	Daniel	M	4/2/1949	05	Industriels-Chefs entreprise	1/10/2014
+18	CHER	PILLET	François	M	13/5/1950	60	Retraités des professions libérales	1/10/2014
+18	CHER	POINTEREAU	Rémy	M	30/3/1953	01	Agriculteurs propriétaires exploit.	1/10/2014
+19	CORREZE	CHASSEING	Daniel	M	10/4/1945	24	Médecins	1/10/2014
+19	CORREZE	NOUGEIN	Claude	M	4/12/1946	05	Industriels-Chefs entreprise	1/10/2014
+21	COTE D'OR	HOUPERT	Alain	M	13/8/1957	24	Médecins	1/10/2014
+21	COTE D'OR	LOISIER	Anne-Catherine	F	13/3/1969	19	Autres cadres (secteur privé)	1/10/2014
+21	COTE D'OR	PATRIAT	François	M	21/3/1943	27	Vétérinaires	1/10/2014
+22	COTES D'ARMOR	BOTREL	Yannick	M	9/12/1951	56	Autres professions	1/10/2014
+22	COTES D'ARMOR	PRUNAUD	Christine	F	4/9/1950	20	Employés (secteur privé)	1/10/2014
+22	COTES D'ARMOR	VASPART	Michel	M	22/2/1948	05	Industriels-Chefs entreprise	1/10/2014
+23	CREUSE	JEANSANNETAS	Eric	M	21/10/1962	43	Enseignants 1er deg.-directeurs école	1/10/2014
+23	CREUSE	LOZACH	Jean-Jacques	M	8/2/1954	42	Professeurs du secondaire et techn.	1/10/2014
+24	DORDOGNE	BERIT-DEBAT	Claude	M	19/2/1946	61	Retraités salariés privés	1/10/2014
+24	DORDOGNE	CAZEAU	Bernard	M	27/4/1939	60	Retraités des professions libérales	1/10/2014
+25	DOUBS	BOURQUIN	Martial	M	23/7/1952	20	Employés (secteur privé)	1/10/2014
+25	DOUBS	GROSPERRIN	Jacques	M	17/10/1955	41	Professeurs de faculté	1/10/2014
+25	DOUBS	LONGEOT	Jean-François	M	27/12/1956	47	Fonctionnaires de catégorie A	1/10/2014
+26	DROME	BOUCHET	Gilbert	M	8/1/1947	59	Retr.artis.commerc.chefs d'entrep.	1/10/2014
+26	DROME	BUIS	Bernard	M	23/6/1956	44	Professions rattachées à enseignt.	1/10/2014
+26	DROME	MONIER	Marie-Pierre	F	28/2/1958	42	Professeurs du secondaire et techn.	1/10/2014
+27	EURE	DURANTON	Nicole	F	13/10/1958	57	Sans profession déclarée	1/10/2014
+27	EURE	MAUREY	Hervé	M	7/5/1961	54	Permanents politiques	1/10/2014
+27	EURE	PONIATOWSKI	Ladislas	M	10/11/1946	56	Autres professions	1/10/2014
+28	EURE ET LOIR	DE MONTGOLFIER	Albéric	M	6/7/1964	54	Permanents politiques	1/10/2014
+28	EURE ET LOIR	DESEYNE	Chantal	F	29/1/1957	44	Professions rattachées à enseignt.	1/10/2014
+28	EURE ET LOIR	RAMOND	Françoise	F	29/9/1940	65	Autres retraités	31/12/2018
+29	FINISTERE	BLONDIN	Maryvonne	F	20/1/1947	62	Retraités de l'enseignement	1/10/2014
+29	FINISTERE	CANEVET	Michel	M	14/12/1960	50	Cadres sup. (entreprises publiques)	1/10/2014
+29	FINISTERE	FICHET	Jean-Luc	M	15/7/1953	56	Autres professions	25/9/2017
+29	FINISTERE	PAUL	Philippe	M	25/1/1965	19	Autres cadres (secteur privé)	1/10/2014
+2A	CORSE SUD	PANUNZI	Jean-Jacques	M	5/4/1956	47	Fonctionnaires de catégorie A	1/10/2014
+2B	HAUTE CORSE	CASTELLI	Joseph	M	4/6/1948	59	Retr.artis.commerc.chefs d'entrep.	1/10/2014
+30	GARD	BORIES	Pascale	F	1/4/1969	05	Industriels-Chefs entreprise	1/10/2014
+30	GARD	LOPEZ	Vivette	F	27/12/1954	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+30	GARD	SUTOUR	Simon	M	18/8/1952	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+31	HAUTE GARONNE	CHATILLON	Alain	M	15/3/1943	05	Industriels-Chefs entreprise	1/10/2014
+31	HAUTE GARONNE	LABORDE	Françoise	F	8/7/1958	43	Enseignants 1er deg.-directeurs école	1/10/2014
+31	HAUTE GARONNE	MEDEVIELLE	Pierre	M	17/4/1960	28	Pharmaciens	1/10/2014
+31	HAUTE GARONNE	MICOULEAU	Brigitte	F	10/9/1951	19	Autres cadres (secteur privé)	1/10/2014
+31	HAUTE GARONNE	RAYNAL	Claude	M	10/10/1957	45	Magistrats	1/10/2014
+32	GERS	MONTAUGE	Franck	M	14/9/1961	13	Ingénieurs	28/9/2014
+32	GERS	VALL	Raymond	M	13/1/1942	61	Retraités salariés privés	6/9/2015
+33	GIRONDE	CARTRON	Françoise	F	27/3/1949	62	Retraités de l'enseignement	1/10/2014
+33	GIRONDE	CAZABONNE	Alain	M	25/8/1944	06	Administrateurs de sociétés	1/10/2014
+33	GIRONDE	DELATTRE	Nathalie	F	2/12/1968	57	Sans profession déclarée	1/10/2014
+33	GIRONDE	HARRIBEY	Laurence	F	8/2/1953	61	Retraités salariés privés	1/10/2014
+33	GIRONDE	LASSARADE	Florence	F	18/8/1957	24	Médecins	1/10/2014
+33	GIRONDE	MADRELLE	Philippe	M	21/4/1937	62	Retraités de l'enseignement	1/10/2014
+34	HERAULT	BRUGUIERE	Marie-Thérèse	F	26/10/1942	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+34	HERAULT	CABANEL	Henri	M	9/3/1959	01	Agriculteurs propriétaires exploit.	1/10/2014
+34	HERAULT	GRAND	Jean-Pierre	M	18/11/1950	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+34	HERAULT	NAVARRO	Robert	M	1/5/1952	64	Retraités des entreprises publiques	1/10/2014
+35	ILLE ET VILAINE	DE LEGGE	Dominique	M	18/2/1952	65	Autres retraités	1/10/2014
+35	ILLE ET VILAINE	GATEL	Françoise	F	14/3/1953	64	Retraités des entreprises publiques	1/10/2014
+35	ILLE ET VILAINE	ROBERT	Sylvie	F	28/8/1963	18	Cadres supérieurs (secteur privé)	1/10/2014
+35	ILLE ET VILAINE	TOURENNE	Jean-Louis	M	25/8/1944	62	Retraités de l'enseignement	1/10/2014
+36	INDRE	GERBAUD	Frédérique	F	3/7/1959	50	Cadres sup. (entreprises publiques)	28/9/2014
+36	INDRE	MAYET	Jean-François	M	30/1/1940	59	Retr.artis.commerc.chefs d'entrep.	1/10/2014
+37	INDRE ET LOIRE 	BABARY	Serge	M	16/7/1946	59	Retr.artis.commerc.chefs d'entrep.	2/10/2017
+37	INDRE ET LOIRE 	LOUAULT	Pierre	M	3/5/1949	58	Retraités agricoles	2/10/2017
+37	INDRE ET LOIRE 	RAIMOND-PAVERO	Isabelle	F	23/2/1961	32	Conseillers juridiques	2/10/2017
+38	ISERE	GONTARD	Guillaume	M	11/3/1971	36	Architectes	2/10/2017
+38	ISERE	PUISSAT	Frédérique	F	4/11/1967	19	Autres cadres (secteur privé)	2/10/2017
+38	ISERE	RAMBAUD	Didier	M	12/5/1959	56	Autres professions	2/10/2017
+38	ISERE	SAVIN	Michel	M	25/11/1958	49	Fonctionnaires de catégorie C	2/10/2017
+38	ISERE	VALLINI	André	M	15/7/1956	29	Avocats	2/10/2017
+39	JURA	CHAUVIN	Marie-Christine	F	20/11/1954	61	Retraités salariés privés	2/10/2017
+39	JURA	VERMEILLET	Sylvie	F	10/6/1967	19	Autres cadres (secteur privé)	2/10/2017
+40	LANDES	KERROUCHE	Eric	M	2/10/1967	47	Fonctionnaires de catégorie A	2/10/2017
+40	LANDES	LUBIN	Monique	F	16/7/1963	54	Permanents politiques	2/10/2017
+41	LOIR ET CHER	JANSSENS	Jean-Marie	M	19/3/1953	58	Retraités agricoles	2/10/2017
+41	LOIR ET CHER	PRINCE	Jean-Paul	M	8/7/1944	63	Retraités fonct.publique (sf enseig.)	1/10/2017
+42	LOIRE	BONNE	Bernard	M	18/9/1948	24	Médecins	2/10/2017
+42	LOIRE	CUKIERMAN	Cécile	F	26/4/1976	42	Professeurs du secondaire et techn.	2/10/2017
+42	LOIRE	FOURNIER	Bernard	M	13/9/1946	56	Autres professions	2/10/2017
+42	LOIRE	TISSOT	Jean-Claude	M	22/9/1963	01	Agriculteurs propriétaires exploit.	2/10/2017
+43	HAUTE LOIRE	CIGOLOTTI	Olivier	M	16/8/1963	54	Permanents politiques	2/10/2017
+43	HAUTE LOIRE	DUPLOMB	Laurent	M	24/10/1971	01	Agriculteurs propriétaires exploit.	2/10/2017
+44	LOIRE ATLANTIQUE	DANTEC	Ronan	M	5/8/1963	39	Autres professions libérales	2/10/2017
+44	LOIRE ATLANTIQUE	GUERRIAU	Joël	M	9/11/1957	18	Cadres supérieurs (secteur privé)	2/10/2017
+44	LOIRE ATLANTIQUE	MEUNIER	Michelle	F	24/1/1956	44	Professions rattachées à enseignt.	2/10/2017
+44	LOIRE ATLANTIQUE	PRIOU	Christophe	M	2/5/1958	57	Sans profession déclarée	2/10/2017
+44	LOIRE ATLANTIQUE	VAUGRENARD	Yannick	M	25/6/1950	61	Retraités salariés privés	2/10/2017
+45	LOIRET	CARDOUX	Jean-Noël	M	18/12/1946	60	Retraités des professions libérales	2/10/2017
+45	LOIRET	SAURY	Hugues	M	12/11/1958	28	Pharmaciens	2/10/2017
+45	LOIRET	SUEUR	Jean-Pierre	M	28/2/1947	62	Retraités de l'enseignement	2/10/2017
+46	LOT	PREVILLE	Angèle	F	23/11/1955	62	Retraités de l'enseignement	2/10/2017
+46	LOT	REQUIER	Jean-Claude	M	4/10/1947	62	Retraités de l'enseignement	2/10/2017
+47	LOT ET GARONNE 	BONFANTI-DOSSAT	Christine	F	25/5/1956	39	Autres professions libérales	2/10/2017
+47	LOT ET GARONNE 	MOGA	Jean-Pierre	M	19/5/1947	64	Retraités des entreprises publiques	2/10/2017
+48	LOZERE	BERTRAND	Alain	M	23/2/1951	63	Retraités fonct.publique (sf enseig.)	2/10/2017
+49	MAINE ET LOIRE 	BIGOT	Joël	M	5/2/1949	62	Retraités de l'enseignement	2/10/2017
+49	MAINE ET LOIRE 	CAPUS	Emmanuel	M	23/6/1974	29	Avocats	2/10/2017
+49	MAINE ET LOIRE 	DEROCHE	Catherine	F	24/2/1953	57	Sans profession déclarée	2/10/2017
+49	MAINE ET LOIRE 	PIEDNOIR	Stéphane	M	25/2/1970	42	Professeurs du secondaire et techn.	2/10/2017
+50	MANCHE	BAS	Philippe	M	20/7/1958	46	Grands corps de l'état	2/10/2017
+50	MANCHE	BIZET	Jean	M	30/8/1947	60	Retraités des professions libérales	2/10/2017
+50	MANCHE	HOULLEGATTE	Jean-Michel	M	30/5/1958	47	Fonctionnaires de catégorie A	2/10/2017
+51	MARNE	DETRAIGNE	Yves	M	21/12/1954	45	Magistrats	2/10/2017
+51	MARNE	FERAT	Françoise	F	5/3/1949	57	Sans profession déclarée	2/10/2017
+51	MARNE	SAVARY	René-Paul	M	3/1/1953	24	Médecins	2/10/2017
+52	HAUTE MARNE	GUENE	Charles	M	6/4/1952	60	Retraités des professions libérales	2/10/2017
+52	HAUTE MARNE	SIDO	Bruno	M	19/2/1951	01	Agriculteurs propriétaires exploit.	2/10/2017
+53	MAYENNE	CHEVROLLIER	Guillaume	M	27/10/1974	18	Cadres supérieurs (secteur privé)	2/10/2017
+53	MAYENNE	DOINEAU	Elisabeth	F	7/4/1961	57	Sans profession déclarée	2/10/2017
+54	MEURTHE ET MOSELLE	GUILLOTIN	Véronique	F	3/11/1962	23	Salariés du secteur médical	2/10/2017
+54	MEURTHE ET MOSELLE	HUSSON	Jean-François	M	17/4/1961	56	Autres professions	2/10/2017
+54	MEURTHE ET MOSELLE	JACQUIN	Olivier	M	8/5/1964	01	Agriculteurs propriétaires exploit.	2/10/2017
+54	MEURTHE ET MOSELLE	NACHBAR	Philippe	M	26/9/1950	60	Retraités des professions libérales	2/10/2017
+55	MEUSE	LONGUET	Gérard	M	24/2/1946	06	Administrateurs de sociétés	2/10/2017
+55	MEUSE	MENONVILLE	Franck	M	3/10/1972	01	Agriculteurs propriétaires exploit.	2/10/2017
+56	MORBIHAN	JOURDA	Muriel	F	27/10/1967	29	Avocats	2/10/2017
+56	MORBIHAN	LABBE	Joël	M	18/10/1952	48	Fonctionnaires de catégorie B	2/10/2017
+56	MORBIHAN	LE NAY	Jacques	M	19/11/1949	58	Retraités agricoles	2/10/2017
+57	MOSELLE	GROSDIDIER	François	M	25/2/1961	47	Fonctionnaires de catégorie A	2/10/2017
+57	MOSELLE	HERZOG	Christine	F	30/12/1968	05	Industriels-Chefs entreprise	2/10/2017
+57	MOSELLE	MASSON	Jean-Louis	M	25/3/1947	13	Ingénieurs	2/10/2017
+57	MOSELLE	MIZZON	Jean-Marie	M	31/3/1956	47	Fonctionnaires de catégorie A	2/10/2017
+57	MOSELLE	TODESCHINI	Jean-Marc	M	12/3/1952	62	Retraités de l'enseignement	2/10/2017
+58	NIEVRE	JOLY	Patrice	M	5/5/1957	46	Grands corps de l'état	2/10/2017
+58	NIEVRE	SOLLOGOUB	Nadia	F	9/11/1961	57	Sans profession déclarée	2/10/2017
+59	NORD	BOCQUET	Eric	M	8/11/1957	42	Professeurs du secondaire et techn.	2/10/2017
+59	NORD	DAUBRESSE	Marc-Philippe	M	1/8/1953	54	Permanents politiques	2/10/2017
+59	NORD	DECOOL	Jean-Pierre	M	19/10/1952	62	Retraités de l'enseignement	2/10/2017
+59	NORD	FILLEUL	Martine	F	6/6/1953	63	Retraités fonct.publique (sf enseig.)	2/10/2017
+59	NORD	GREAUME	Michelle	F	30/10/1967	48	Fonctionnaires de catégorie B	2/10/2017
+59	NORD	HENNO	Olivier	M	21/4/1962	54	Permanents politiques	2/10/2017
+59	NORD	KANNER	Patrick	M	29/4/1957	47	Fonctionnaires de catégorie A	2/10/2017
+59	NORD	LETARD	Valérie	F	13/10/1962	54	Permanents politiques	2/10/2017
+59	NORD	LHERBIER	Brigitte	F	21/6/1956	44	Professions rattachées à enseignt.	2/10/2017
+59	NORD	MARCHAND	Frédéric	M	31/5/1965	06	Administrateurs de sociétés	2/10/2017
+59	NORD	WATTEBLED	Dany	M	22/11/1951	59	Retr.artis.commerc.chefs d'entrep.	2/10/2017
+60	OISE	BASCHER	Jérôme	M	31/5/1973	47	Fonctionnaires de catégorie A	24/9/2017
+60	OISE	COURTIAL	Edouard	M	28/6/1973	18	Cadres supérieurs (secteur privé)	2/10/2017
+60	OISE	PACCAUD	Olivier	M	13/4/1969	47	Fonctionnaires de catégorie A	2/10/2017
+60	OISE	ROSSIGNOL	Laurence	F	22/12/1957	32	Conseillers juridiques	2/10/2017
+61	ORNE	GOULET	Nathalie	F	24/5/1958	29	Avocats	2/10/2017
+61	ORNE	SEGOUIN	Vincent	M	1/7/1972	33	Agents généraux d'assurances	1/7/2018
+62	PAS DE CALAIS	APOURCEAU-POLY	Cathy	F	18/4/1965	20	Employés (secteur privé)	1/7/2018
+62	PAS DE CALAIS	CORBISEZ	Jean-Pierre	M	7/3/1960	13	Ingénieurs	2/10/2017
+62	PAS DE CALAIS	DAGBERT	Michel	M	28/1/1962	23	Salariés du secteur médical	2/10/2017
+62	PAS DE CALAIS	FOURNIER	Catherine	F	16/9/1955	06	Administrateurs de sociétés	2/10/2017
+62	PAS DE CALAIS	RAPIN	Jean-François	M	11/5/1966	24	Médecins	2/10/2017
+62	PAS DE CALAIS	VAN HEGHE	Sabine	F	8/9/1960	47	Fonctionnaires de catégorie A	2/10/2017
+62	PAS DE CALAIS	VANLERENBERGHE	Jean-Marie	M	29/3/1939	13	Ingénieurs	2/10/2017
+63	PUY DE DOME	BOYER	Jean-Marc	M	24/2/1954	62	Retraités de l'enseignement	2/10/2017
+63	PUY DE DOME	GOLD	Eric	M	7/6/1964	43	Enseignants 1er deg.-directeurs école	2/10/2017
+63	PUY DE DOME	MAGNER	Jacques-Bernard	M	1/6/1952	43	Enseignants 1er deg.-directeurs école	2/10/2017
+64	PYRENEES ATLANTIQUES	BRISSON	Max	M	8/3/1957	44	Professions rattachées à enseignt.	2/10/2017
+64	PYRENEES ATLANTIQUES	ESPAGNAC	Frédérique	F	19/4/1972	19	Autres cadres (secteur privé)	2/10/2017
+64	PYRENEES ATLANTIQUES	SAINT-PE	Denise	F	5/1/1951	57	Sans profession déclarée	2/10/2017
+65	HAUTES PYRENEES	ARTIGALAS	Viviane	F	22/10/1956	47	Fonctionnaires de catégorie A	2/10/2017
+65	HAUTES PYRENEES	CARRERE	Maryse	F	8/4/1967	47	Fonctionnaires de catégorie A	2/10/2017
+66	PYRENEES ORIENTALES	CALVET	François	M	1/4/1953	57	Sans profession déclarée	2/10/2017
+66	PYRENEES ORIENTALES	SOL	Jean	M	3/6/1952	47	Fonctionnaires de catégorie A	2/10/2017
+67	BAS RHIN	BIGOT	Jacques	M	31/7/1952	60	Retraités des professions libérales	1/10/2014
+67	BAS RHIN	KELLER	Fabienne	F	20/10/1959	46	Grands corps de l'état	1/10/2014
+67	BAS RHIN	KENNEL	Guy-Dominique	M	14/4/1952	44	Professions rattachées à enseignt.	1/10/2014
+67	BAS RHIN	KERN	Claude	M	13/3/1959	42	Professeurs du secondaire et techn.	1/10/2014
+67	BAS RHIN	REICHARDT	André	M	5/12/1949	64	Retraités des entreprises publiques	1/10/2014
+68	HAUT RHIN	BOCKEL	Jean-Marie	M	22/6/1950	29	Avocats	1/10/2014
+68	HAUT RHIN	DANESI	René	M	30/8/1947	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+68	HAUT RHIN	SCHILLINGER	Patricia	F	18/1/1963	57	Sans profession déclarée	1/10/2014
+68	HAUT RHIN	TROENDLE	Catherine	F	20/2/1961	56	Autres professions	1/10/2014
+69	RHONE	BUFFET	François-Noël	M	28/8/1963	29	Avocats	1/10/2014
+69	RHONE	DEVINAZ	Gilbert Luc	M	19/7/1953	51	Cadres (entreprises publiques)	6/12/2018
+69	RHONE	DI FOLCO	Catherine	F	30/11/1960	57	Sans profession déclarée	1/10/2014
+69	RHONE	FORISSIER	Michel	M	12/9/1943	59	Retr.artis.commerc.chefs d'entrep.	1/10/2014
+69	RHONE	GUILLEMOT	Annie	F	27/1/1956	47	Fonctionnaires de catégorie A	1/10/2014
+69	RHONE	LAMURE	Elisabeth	F	20/11/1947	57	Sans profession déclarée	1/10/2014
+69	RHONE	VULLIEN	Michèle	F	18/1/1944	18	Cadres supérieurs (secteur privé)	1/10/2014
+70	HAUTE SAONE	JOYANDET	Alain	M	15/1/1954	05	Industriels-Chefs entreprise	1/10/2014
+70	HAUTE SAONE	RAISON	Michel	M	5/11/1949	58	Retraités agricoles	1/10/2014
+71	SAONE ET LOIRE 	DURAIN	Jérôme	M	2/6/1969	47	Fonctionnaires de catégorie A	1/10/2014
+71	SAONE ET LOIRE 	EMORINE	Jean-Paul	M	20/3/1944	58	Retraités agricoles	1/10/2014
+71	SAONE ET LOIRE 	MERCIER	Marie	F	16/6/1958	24	Médecins	12/6/2015
+72	SARTHE	DE NICOLAY	Louis-Jean	M	18/9/1949	06	Administrateurs de sociétés	1/10/2014
+72	SARTHE	GRELET-CERTENAIS	Nadine	F	17/1/1959	20	Employés (secteur privé)	1/10/2014
+72	SARTHE	VOGEL	Jean-Pierre	M	7/8/1956	34	Experts comptables	1/10/2014
+73	SAVOIE	BERTHET	Martine	F	27/3/1961	28	Pharmaciens	2/10/2017
+73	SAVOIE	VIAL	Jean-Pierre	M	17/2/1951	29	Avocats	1/10/2014
+74	HAUTE SAVOIE	HERVE	Loïc	M	8/6/1980	47	Fonctionnaires de catégorie A	1/10/2014
+74	HAUTE SAVOIE	NOEL	Sylviane	F	27/1/1978	50	Cadres sup. (entreprises publiques)	8/8/2018
+74	HAUTE SAVOIE	PELLEVAT	Cyril	M	18/2/1981	18	Cadres supérieurs (secteur privé)	1/10/2014
+75	PARIS	ASSOULINE	David	M	16/6/1959	42	Professeurs du secondaire et techn.	2/10/2017
+75	PARIS	BARGETON	Julien	M	29/3/1973	32	Conseillers juridiques	2/10/2017
+75	PARIS	BENBASSA	Esther	F	27/3/1950	41	Professeurs de faculté	2/10/2017
+75	PARIS	BOULAY-ESPERONNIER	Céline	F	18/12/1970	54	Permanents politiques	2/10/2017
+75	PARIS	CHARON	Pierre	M	1/3/1951	59	Retr.artis.commerc.chefs d'entrep.	2/10/2017
+75	PARIS	DE LA GONTRIE	Marie-Pierre	F	18/12/1958	39	Autres professions libérales	2/10/2017
+75	PARIS	DOMINATI	Philippe	M	12/4/1954	06	Administrateurs de sociétés	2/10/2017
+75	PARIS	DUMAS	Catherine	F	13/7/1957	56	Autres professions	2/10/2017
+75	PARIS	FERAUD	Rémi	M	24/8/1971	57	Sans profession déclarée	2/10/2017
+75	PARIS	JOMIER	Bernard	M	9/10/1963	24	Médecins	2/10/2017
+75	PARIS	LAURENT	Pierre	M	1/7/1957	37	Journalistes et autres médias	2/10/2017
+75	PARIS	LIENEMANN	Marie-Noëlle	F	12/7/1951	62	Retraités de l'enseignement	2/10/2017
+76	SEINE MARITIME 	BRULIN	Céline	F	4/3/1970	47	Fonctionnaires de catégorie A	1/6/2018
+76	SEINE MARITIME 	CANAYER	Agnès	F	21/9/1965	44	Professions rattachées à enseignt.	1/10/2014
+76	SEINE MARITIME 	MARIE	Didier	M	19/5/1960	43	Enseignants 1er deg.-directeurs école	1/10/2014
+76	SEINE MARITIME 	MORIN-DESAILLY	Catherine	F	6/7/1960	54	Permanents politiques	1/10/2014
+76	SEINE MARITIME 	REVET	Charles	M	9/11/1937	01	Agriculteurs propriétaires exploit.	1/10/2014
+76	SEINE MARITIME 	TOCQUEVILLE	Nelly	F	2/5/1950	62	Retraités de l'enseignement	1/10/2014
+77	SEINE ET MARNE 	CHAIN-LARCHE	Anne	F	11/4/1958	28	Pharmaciens	2/10/2017
+77	SEINE ET MARNE 	CUYPERS	Pierre	M	23/3/1944	01	Agriculteurs propriétaires exploit.	2/10/2017
+77	SEINE ET MARNE 	DE BELENET	Arnaud	M	14/3/1975	32	Conseillers juridiques	2/10/2017
+77	SEINE ET MARNE 	EBLE	Vincent	M	15/10/1957	48	Fonctionnaires de catégorie B	2/10/2017
+77	SEINE ET MARNE 	MELOT	Colette	F	20/4/1947	62	Retraités de l'enseignement	2/10/2017
+77	SEINE ET MARNE 	THOMAS	Claudine	F	19/8/1961	57	Sans profession déclarée	2/10/2017
+78	YVELINES	DE CIDRAC	Marta	F	13/6/1964	36	Architectes	2/10/2017
+78	YVELINES	LARCHER	Gérard	M	14/9/1949	27	Vétérinaires	2/10/2017
+78	YVELINES	LAUGIER	Michel	M	11/7/1956	37	Journalistes et autres médias	2/10/2017
+78	YVELINES	LÉVRIER	Martin	M	30/10/1962	18	Cadres supérieurs (secteur privé)	2/10/2017
+78	YVELINES	PRIMAS	Sophie	F	7/6/1962	18	Cadres supérieurs (secteur privé)	2/10/2017
+78	YVELINES	SCHMITZ	Alain	M	27/4/1948	60	Retraités des professions libérales	2/10/2017
+79	DEUX SEVRES	MORISSET	Jean-Marie	M	18/8/1947	61	Retraités salariés privés	1/10/2014
+79	DEUX SEVRES	MOUILLER	Philippe	M	20/9/1969	57	Sans profession déclarée	1/10/2014
+80	SOMME	BIGNON	Jérôme	M	1/1/1949	29	Avocats	1/10/2014
+80	SOMME	DUBOIS	Daniel	M	5/2/1952	65	Autres retraités	1/10/2014
+80	SOMME	MANABLE	Christian	M	19/6/1948	62	Retraités de l'enseignement	1/10/2014
+81	TARN	BONNECARRERE	Philippe	M	12/7/1955	29	Avocats	1/10/2014
+81	TARN	CARCENAC	Thierry	M	19/12/1950	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+82	TARN ET GARONNE	BONHOMME	François	M	5/5/1969	56	Autres professions	1/10/2014
+82	TARN ET GARONNE	COLLIN	Yvon	M	10/4/1944	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+83	VAR	COLLOMBAT	Pierre-Yves	M	18/7/1945	62	Retraités de l'enseignement	1/10/2014
+83	VAR	GINESTA	Jordi Dit Georges	M	8/7/1942	17	Agents d'assurances	22/9/2017
+83	VAR	KAUFFMANN	Claudine	F	28/9/1944	65	Autres retraités	1/10/2014
+83	VAR	LANFRANCHI-DORGAL	Christine	F	24/4/1961	47	Fonctionnaires de catégorie A	1/10/2014
+84	VAUCLUSE	DUFAUT	Alain	M	2/1/1944	39	Autres professions libérales	13/2/2015
+84	VAUCLUSE	HAUT	Claude	M	22/12/1944	63	Retraités fonct.publique (sf enseig.)	1/10/2014
+84	VAUCLUSE	MILON	Alain	M	16/9/1947	60	Retraités des professions libérales	1/10/2014
+85	VENDEE	BILLON	Annick	F	3/8/1967	57	Sans profession déclarée	1/10/2014
+85	VENDEE	MANDELLI	Didier	M	7/8/1964	56	Autres professions	1/10/2014
+85	VENDEE	RETAILLEAU	Bruno	M	20/11/1960	54	Permanents politiques	1/10/2014
+86	VIENNE	BOULOUX	Yves	M	30/8/1960	56	Autres professions	17/12/2017
+86	VIENNE	FOUCHÉ	Alain	M	4/12/1942	60	Retraités des professions libérales	1/10/2014
+87	HAUTE VIENNE	GABOUTY	Jean-Marc	M	17/5/1949	05	Industriels-Chefs entreprise	1/10/2014
+87	HAUTE VIENNE	PEROL-DUMONT	Marie-Françoise	F	26/5/1952	62	Retraités de l'enseignement	1/10/2014
+88	VOSGES	GREMILLET	Daniel	M	31/7/1953	01	Agriculteurs propriétaires exploit.	1/10/2014
+88	VOSGES	PIERRE	Jackie	M	27/5/1946	61	Retraités salariés privés	1/10/2014
+89	YONNE	RAUSCENT	Noëlle	F	10/10/1946	58	Retraités agricoles	22/7/2017
+89	YONNE	VERIEN	Dominique	F	29/8/1965	13	Ingénieurs	17/12/2017
+90	TERRITOIRE DE BELFORT	PERRIN	Cédric	M	20/1/1974	47	Fonctionnaires de catégorie A	1/10/2014
+91	ESSONNE	DARCOS	Laure	F	27/11/1970	57	Sans profession déclarée	2/10/2017
+91	ESSONNE	DELAHAYE	Vincent	M	23/8/1959	34	Experts comptables	2/10/2017
+91	ESSONNE	GUIDEZ	Jocelyne	F	26/9/1956	19	Autres cadres (secteur privé)	2/10/2017
+91	ESSONNE	HUGONET	Jean-Raymond	M	10/1/1958	39	Autres professions libérales	2/10/2017
+91	ESSONNE	LEONHARDT	Olivier	M	29/1/1964	54	Permanents politiques	2/10/2017
+92	HAUTS DE SEINE 	GATTOLIN	André	M	24/6/1960	35	Ingénieurs conseils	2/10/2017
+92	HAUTS DE SEINE 	IACOVELLI	Xavier	M	31/3/1981	47	Fonctionnaires de catégorie A	2/10/2017
+92	HAUTS DE SEINE 	KAROUTCHI	Roger	M	26/8/1951	46	Grands corps de l'état	2/10/2017
+92	HAUTS DE SEINE 	LAVARDE	Christine	F	16/10/1984	46	Grands corps de l'état	2/10/2017
+92	HAUTS DE SEINE 	MARSEILLE	Hervé	M	20/8/1954	56	Autres professions	2/10/2017
+92	HAUTS DE SEINE 	OUZOULIAS	Pierre	M	28/1/1964	47	Fonctionnaires de catégorie A	2/10/2017
+92	HAUTS DE SEINE 	PEMEZEC	Philippe	M	25/9/1955	56	Autres professions	2/10/2017
+93	SEINE SAINT-DENIS	ASSASSI	Eliane	F	2/10/1958	18	Cadres supérieurs (secteur privé)	2/10/2017
+93	SEINE SAINT-DENIS	CAPO-CANELLAS	Vincent	M	4/5/1967	50	Cadres sup. (entreprises publiques)	2/10/2017
+93	SEINE SAINT-DENIS	DALLIER	Philippe	M	8/12/1962	19	Autres cadres (secteur privé)	2/10/2017
+93	SEINE SAINT-DENIS	DELMONT-KOROPOULIS	Annie	F	13/7/1947	24	Médecins	2/10/2017
+93	SEINE SAINT-DENIS	GAY	Fabien	M	13/1/1984	18	Cadres supérieurs (secteur privé)	2/10/2017
+93	SEINE SAINT-DENIS	ROGER	Gilbert	M	9/11/1953	61	Retraités salariés privés	2/10/2017
+94	VAL DE MARNE	CAMBON	Christian	M	8/3/1948	59	Retr.artis.commerc.chefs d'entrep.	2/10/2017
+94	VAL DE MARNE	COHEN	Laurence	F	15/1/1953	60	Retraités des professions libérales	2/10/2017
+94	VAL DE MARNE	LAFON	Laurent	M	18/11/1965	41	Professeurs de faculté	2/10/2017
+94	VAL DE MARNE	PROCACCIA	Catherine	F	13/10/1949	61	Retraités salariés privés	2/10/2017
+94	VAL DE MARNE	SAVOLDELLI	Pascal	M	14/1/1961	57	Sans profession déclarée	2/10/2017
+94	VAL DE MARNE	TAILLE-POLIAN	Sophie	F	4/10/1974	47	Fonctionnaires de catégorie A	2/10/2017
+95	VAL D'OISE	BAZIN	Arnaud	M	10/1/1959	27	Vétérinaires	2/10/2017
+95	VAL D'OISE	EUSTACHE-BRINIO	Jacqueline	F	5/9/1956	42	Professeurs du secondaire et techn.	2/10/2017
+95	VAL D'OISE	MEURANT	Sébastien	M	18/3/1971	05	Industriels-Chefs entreprise	2/10/2017
+95	VAL D'OISE	RICHARD	Alain	M	29/8/1945	46	Grands corps de l'état	2/10/2017
+95	VAL D'OISE	TEMAL	Rachid	M	29/3/1973	18	Cadres supérieurs (secteur privé)	2/10/2017
+ZA	GUADELOUPE	JASMIN	Victoire	F	23/12/1955	51	Cadres (entreprises publiques)	2/10/2017
+ZA	GUADELOUPE	LUREL	Victorin	M	20/8/1951	63	Retraités fonct.publique (sf enseig.)	2/10/2017
+ZA	GUADELOUPE	THEOPHILE	Dominique	M	4/8/1960	06	Administrateurs de sociétés	2/10/2017
+ZB	MARTINIQUE	ANTISTE	Maurice	M	22/6/1953	62	Retraités de l'enseignement	2/10/2017
+ZB	MARTINIQUE	CONCONNE	Catherine	F	18/5/1963	54	Permanents politiques	2/10/2017
+ZC	GUYANE	KARAM	Antoine	M	21/2/1950	43	Enseignants 1er deg.-directeurs école	1/10/2014
+ZC	GUYANE	PATIENT	Georges	M	1/4/1949	54	Permanents politiques	1/10/2014
+ZD	LA REUNION	DENNEMONT	Michel	M	11/2/1949	60	Retraités des professions libérales	2/10/2017
+ZD	LA REUNION	DINDAR	Nassimah	F	20/1/1960	42	Professeurs du secondaire et techn.	2/10/2017
+ZD	LA REUNION	LAGOURGUE	Jean-Louis	M	5/8/1947	18	Cadres supérieurs (secteur privé)	2/10/2017
+ZD	LA REUNION	MALET	Viviane	F	28/10/1954	57	Sans profession déclarée	2/10/2017
+ZM	MAYOTTE	HASSANI	Abdallah	M	2/7/1954	42	Professeurs du secondaire et techn.	2/10/2017
+ZM	MAYOTTE	MOHAMED SOILIHI	Thani	M	20/6/1972	29	Avocats	2/10/2017
+ZN	NOUVELLE CALEDONIE	FROGIER	Pierre	M	16/11/1950	08	Agents immobiliers	2/10/2017
+ZN	NOUVELLE CALEDONIE	POADJA	Gérard	M	30/9/1963	54	Permanents politiques	2/10/2017
+ZP	POLYNESIE FRANCAISE	LAUREY	Nuihau	M	29/12/1964	19	Autres cadres (secteur privé)	3/5/2015
+ZP	POLYNESIE FRANCAISE	TETUANUI	Lana	F	23/2/1970	56	Autres professions	3/5/2015
+ZS	SAINT PIERRE ET MIQUELON	ARTANO	Stéphane	M	9/3/1973	19	Autres cadres (secteur privé)	2/10/2017
+ZT	SAINT-MARTIN	ARNELL	Guillaume Jacques	M	20/1/1958	19	Autres cadres (secteur privé)	1/10/2014
+ZW	WALLIS ET FUTUNA	LAUFOAULU	Robert	M	7/7/1947	62	Retraités de l'enseignement	1/10/2014
+ZY	SAINT-BARTHELEMY	MAGRAS	Michel	M	6/1/1954	43	Enseignants 1er deg.-directeurs école	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	CADIC	Olivier	M	22/4/1962	05	Industriels-Chefs entreprise	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	CONWAY-MOURET	Hélène	F	13/9/1960	41	Professeurs de faculté	2/10/2017
+ZZ	FRANCAIS DE L'ETRANGER	DEL PICCHIA	Robert	M	10/11/1942	65	Autres retraités	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	DEROMEDI	Jacky	F	15/6/1944	06	Administrateurs de sociétés	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	FRASSA	Christophe-André	M	4/2/1968	32	Conseillers juridiques	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	GARRIAUD MAYLAM	Joëlle	F	20/3/1955	39	Autres professions libérales	2/10/2017
+ZZ	FRANCAIS DE L'ETRANGER	LECONTE	Jean-Yves	M	31/10/1966	13	Ingénieurs	2/10/2017
+ZZ	FRANCAIS DE L'ETRANGER	LE GLEUT	Ronan	M	21/8/1976	13	Ingénieurs	2/10/2017
+ZZ	FRANCAIS DE L'ETRANGER	LEPAGE	Claudine	F	10/8/1949	44	Professions rattachées à enseignt.	1/10/2014
+ZZ	FRANCAIS DE L'ETRANGER	REGNARD	Damien	M	24/2/1966	56	Autres professions	28/7/2018
+ZZ	FRANCAIS DE L'ETRANGER	RENAUD-GARABEDIAN	Evelyne	F	18/6/1950	05	Industriels-Chefs entreprise	2/10/2017
+ZZ	FRANCAIS DE L'ETRANGER	YUNG	Richard	M	22/9/1947	56	Autres professions	1/10/2014

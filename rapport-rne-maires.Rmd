@@ -1,0 +1,221 @@
+---
+title: "Les maires"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    source_code: 'https://github.com/mlaunois/rapport-nos-elus-nationaux'
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(readr)
+library(tricky)
+library(ggplot2)
+library(lubridate)
+library(stringr)
+
+library(flexdashboard)
+
+table_maires <- read_tsv(
+  file = "9-rne-maires.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+```
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_maires_hommes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_maires_femmes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_maires_hommes <- nombre_maires_hommes / (nombre_maires_hommes + nombre_maires_femmes)
+taux_maires_femmes <- nombre_maires_femmes / (nombre_maires_hommes + nombre_maires_femmes)
+
+table_maires <- table_maires %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_maires %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_maires %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_maires_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont maires, soit",
+    format(
+      round(taux_maires_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_maires_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont maires, soit",
+    format(
+      round(taux_maires_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Petite anecdote
+
+Saviez-vous que le maire le plus vieux a 96 ans ? Et que la moyenne d'âge est estimée à 62 ans ?
+
+Row
+------------------
+
+### Prénoms des maires hommes
+```{r}
+graphique_maires_hommes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les maires hommes"
+  )
+print(graphique_maires_hommes)
+```
+
+### Prénoms des maires femmes
+```{r}
+graphique_maires_femmes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les maires femmes"
+  )
+print(graphique_maires_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de maires
+
+```{r}
+graphique_maires_departements <- table_maires %>% 
+  count(libelle_de_departement_maires_, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_de_departement_maires_,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de maires", 
+    caption = "On voit bien que la Seine-Maritime (76) et l'Aisne (02)\n
+    sont les départements qui ont le plus de maires. Ceux de la\n
+    petite couronne de l'Île-de-France (Seine-Saint-Denis,\n
+    Hauts-de-Seine, Val-de-Marne), les départements d'outre-mer et\n
+    le département de Paris sont ceux qui ont le moins de maires\n
+    (moins de 50 maires)."
+  )
+print(graphique_maires_departements)
+```
+
+### Professions exercées par les maires
+
+```{r}
+graphique_maires_professions <- table_maires %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_de_la_profession,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premières professions les plus exercées par les maires", 
+    caption = "Presque rien à dire : les maires sont presque tous des\n
+    agriculteurs propriétaires d'exploitation ou des retraités."
+  )
+print(graphique_maires_professions)
+```
+
+Row
+------------------
+
+### Liens
+
+[Retour à l'accueil du rapport](rapport-rne.html)
+
+[Page sur les députés](rapport-rne-deputes.html)
+
+[Page sur les sénateurs](rapport-rne-senateurs.html)

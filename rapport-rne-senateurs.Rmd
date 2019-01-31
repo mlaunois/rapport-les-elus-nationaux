@@ -1,0 +1,223 @@
+---
+title: "Les sénateurs"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    source_code: 'https://github.com/mlaunois/rapport-nos-elus-nationaux'
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(readr)
+library(tricky)
+library(ggplot2)
+library(lubridate)
+library(stringr)
+
+library(flexdashboard)
+
+table_senateurs <- read_tsv(
+  file = "7-rne-senateurs.txt", 
+  skip = 1, 
+  locale = locale(
+    date_format = "%d/%m/%Y",
+    encoding = "ISO-8859-1"
+  )
+) %>% set_standard_names()
+```
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_senateurs_hommes <- table_senateurs %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_senateurs_femmes <- table_senateurs %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_senateurs_hommes <- nombre_senateurs_hommes / (nombre_senateurs_hommes + nombre_senateurs_femmes)
+taux_senateurs_femmes <- nombre_senateurs_femmes / (nombre_senateurs_hommes + nombre_senateurs_femmes)
+
+table_senateurs <- table_senateurs %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_senateurs %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_senateurs %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_senateurs_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont sénateurs, soit",
+    format(
+      round(taux_senateurs_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_senateurs_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont sénatrices, soit",
+    format(
+      round(taux_senateurs_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Petite anecdote
+
+Saviez-vous que le sénateur le plus vieux a 81 ans ? Et que la moyenne d'âge est estimée à 61 ans ?
+
+Row
+------------------
+
+### Comment s'appellent nos sénateurs ?
+```{r}
+graphique_senateurs_hommes <- table_senateurs %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les sénateurs hommes"
+  )
+print(graphique_senateurs_hommes)
+```
+
+### Quels sont les noms les plus prisés parmi les sénatrices ?
+```{r}
+graphique_senateurs_femmes <- table_senateurs %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = prenom_de_l_elu,
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les sénatrices femmes"
+  )
+print(graphique_senateurs_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de sénateurs
+
+```{r}
+graphique_senateurs_departements <- table_senateurs %>% 
+  count(libelle_du_departement, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_du_departement,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de sénateurs", 
+    caption = "Nous sommes d'accord pour dire que c'est un privilège\n
+    d'avoir plus de 5 sénateurs pour son département, privilège\n
+    accordé à 12 départements et aux \"Français de l'étranger\",\n
+    qui sont les grands gagnants. Notamment sur les territoires\n
+    d'outre-mer ou dans les territoires de montagne ou ruraux, on\n
+    peut remarquer un manque crucial de sénateurs ; 46 % des\n
+    départements français ont un ou deux sénateurs."
+  )
+print(graphique_senateurs_departements)
+```
+
+### Professions exercées par les sénateurs
+
+```{r}
+graphique_senateurs_professions <- table_senateurs %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = libelle_de_la_profession,
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premières professions les plus exercées par les sénateurs", 
+    caption = "Incroyable mais vrai : un grand nombre de sénateurs n'a\n
+    aucune profession déclarée ! Et beaucoup d'autres sont des\n
+    retraités ou des fonctionnaires de catégorie A !"
+  )
+print(graphique_senateurs_professions)
+```
+
+Row
+------------------
+
+### Liens
+
+[Retour à l'accueil du rapport](rapport-rne.html)
+
+[Page sur les maires](rapport-rne-maires.html)
+
+[Page sur les députés](rapport-rne-deputes.html)
