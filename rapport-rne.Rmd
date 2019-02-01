@@ -3,15 +3,22 @@ title: "Les élus nationaux"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
-    source_code: 'https://github.com/mlaunois/rapport-nos-elus-nationaux'
+    source_code: 'https://github.com/mlaunois/rapport-les-elus-nationaux'
     vertical_layout: scroll
 ---
+
+Accueil
+============
 
 ```{r setup, include=FALSE}
 library(dplyr)
 library(readr)
 library(tricky)
+library(ggplot2)
+library(stringr)
+library(lubridate)
 library(flexdashboard)
+library(forcats)
 
 table_maires <- read_tsv(
   file = "9-rne-maires.txt", 
@@ -39,7 +46,7 @@ table_senateurs <- read_tsv(
 ) %>% set_standard_names()
 ```
 
-Row
+Row {data-height=150}
 ------------------
 
 ### Rapport sur les maires
@@ -49,7 +56,7 @@ table_maires %>%
   pull(n) %>%
   format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
   valueBox(caption = "maires", color = '#ff0000',
-           href = 'rapport-rne-maires.html')
+           href = '#nos-maires')
 ```
 
 ### Rapport sur les députés
@@ -59,7 +66,7 @@ table_deputes %>%
   pull(n) %>%
   format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
   valueBox(caption = "députés", color = '#007fff',
-           href = 'rapport-rne-deputes.html')
+           href = '#nos-deputes')
 ```
 
 ### Rapport sur les sénateurs
@@ -69,5 +76,721 @@ table_senateurs %>%
   pull(n) %>%
   format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
   valueBox(caption = "sénateurs", color = '#ff7f00',
-           href = 'rapport-rne-senateurs.html')
+           href = '#nos-senateurs')
+```
+
+Row {data-height=200}
+------------------
+
+### Présentation
+
+Qui sont nos élus ? Grâce aux données du [Répertoire national des élus (RNE)](https://www.data.gouv.fr/fr/datasets/donnees-du-repertoire-national-des-elus/), j'ai pu en savoir un peu plus.
+
+J'ai réalisé ce travail durant mon stage de 3<sup>ème</sup> à Etalab en utilisant le langage R. Le code source est disponible sur [GitHub](https://github.com/mlaunois/rapport-les-elus-nationaux).
+
+
+Row
+------------------
+
+### Âge moyen des élus hommmes
+
+```{r}
+date_de_naissance_elus_hommes <- table_maires %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  ) %>%
+  filter(code_sexe == 'M') %>%
+  count(age, sort = TRUE) %>%
+  mutate(
+    n = NULL,
+    nombre_elus = n
+  )
+
+date_de_naissance_elus_hommes <- bind_rows(date_de_naissance_elus_hommes %>% add_rownames(), 
+          table_deputes %>% mutate(
+            age = floor(
+              interval(start = date_de_naissance, end = today()) %>%
+                time_length(unit = "years")
+            )
+          ) %>%
+            filter(code_sexe == 'M') %>%
+            count(age, sort = TRUE) %>%
+            mutate(
+              n = NULL,
+              nombre_elus = n
+            ) %>% add_rownames()) %>%
+            group_by(rowname) %>%
+            group_by(age) %>%
+            summarise(
+              nombre_elus = sum(nombre_elus)
+            )
+date_de_naissance_elus_hommes <- bind_rows(date_de_naissance_elus_hommes %>% add_rownames(), 
+          table_senateurs %>% mutate(
+            age = floor(
+              interval(start = date_de_naissance, end = today()) %>%
+                time_length(unit = "years")
+            )
+          ) %>%
+            filter(code_sexe == 'M') %>%
+            count(age, sort = TRUE) %>%
+            mutate(
+              n = NULL,
+              nombre_elus = n
+            ) %>% add_rownames()) %>%
+            group_by(rowname) %>%
+            group_by(age) %>%
+            summarise(
+              nombre_elus = sum(nombre_elus)
+            )
+somme_ages <- date_de_naissance_elus_hommes %>%
+  summarize(somme_ages = sum(age * nombre_elus)) %>%
+  pull(somme_ages)
+age_moyen_hommes <- somme_ages / (date_de_naissance_elus_hommes %>%
+                                    summarize(nombre_elus = sum(nombre_elus)) %>%
+                                    pull(nombre_elus))
+age_moyen_hommes %>%
+  round(digits = 2) %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  str_c(
+    'ans',
+    sep = ' '
+  ) %>%
+  valueBox(caption = "l'âge moyen approximatif des élus hommes", color = '#007fff',
+           icon = 'fa-male')
+```
+
+### Âge moyen des élues femmes
+
+```{r}
+date_de_naissance_elus_femmes <- table_maires %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  ) %>%
+  filter(code_sexe == 'F') %>%
+  count(age, sort = TRUE) %>%
+  mutate(
+    n = NULL,
+    nombre_elus = n
+  )
+
+date_de_naissance_elus_femmes <- bind_rows(date_de_naissance_elus_femmes %>% add_rownames(), 
+          table_deputes %>% mutate(
+            age = floor(
+              interval(start = date_de_naissance, end = today()) %>%
+                time_length(unit = "years")
+            )
+          ) %>%
+            filter(code_sexe == 'F') %>%
+            count(age, sort = TRUE) %>%
+            mutate(
+              n = NULL,
+              nombre_elus = n
+            ) %>% add_rownames()) %>%
+            group_by(rowname) %>%
+            group_by(age) %>%
+            summarise(
+              nombre_elus = sum(nombre_elus)
+            )
+date_de_naissance_elus_femmes <- bind_rows(date_de_naissance_elus_femmes %>% add_rownames(), 
+          table_senateurs %>% mutate(
+            age = floor(
+              interval(start = date_de_naissance, end = today()) %>%
+                time_length(unit = "years")
+            )
+          ) %>%
+            filter(code_sexe == 'F') %>%
+            count(age, sort = TRUE) %>%
+            mutate(
+              n = NULL,
+              nombre_elus = n
+            ) %>% add_rownames()) %>%
+            group_by(rowname) %>%
+            group_by(age) %>%
+            summarise(
+              nombre_elus = sum(nombre_elus)
+            )
+somme_ages <- date_de_naissance_elus_femmes %>%
+  summarize(somme_ages = sum(age * nombre_elus)) %>%
+  pull(somme_ages)
+age_moyen_femmes <- somme_ages / (date_de_naissance_elus_femmes %>%
+                                    summarize(nombre_elus = sum(nombre_elus)) %>%
+                                    pull(nombre_elus))
+age_moyen_femmes %>%
+  round(digits = 2) %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  str_c(
+    'ans',
+    sep = ' '
+  ) %>%
+  valueBox(caption = "l'âge moyen approximatif des élues femmes", color = '#ff007f',
+           icon = 'fa-female')
+```
+
+Nos maires
+==============
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_maires_hommes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_maires_femmes <- table_maires %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_maires_hommes <- nombre_maires_hommes / (nombre_maires_hommes + nombre_maires_femmes)
+taux_maires_femmes <- nombre_maires_femmes / (nombre_maires_hommes + nombre_maires_femmes)
+
+table_maires <- table_maires %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_maires %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_maires %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_maires_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont maires, soit",
+    format(
+      round(taux_maires_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_maires_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont maires, soit",
+    format(
+      round(taux_maires_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Petite anecdote
+
+Saviez-vous que le maire le plus vieux a 96 ans ? Et que la moyenne d'âge est estimée à 62 ans ?
+
+Row
+------------------
+
+### Prénoms des maires hommes
+```{r}
+graphique_maires_hommes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les maires hommes"
+  )
+print(graphique_maires_hommes)
+```
+
+### Prénoms des maires femmes
+```{r}
+graphique_maires_femmes <- table_maires %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les maires femmes"
+  )
+print(graphique_maires_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de maires
+
+```{r}
+graphique_maires_departements <- table_maires %>% 
+  count(libelle_de_departement_maires_, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_de_departement_maires_, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de maires", 
+    caption = "On voit bien que la Seine-Maritime (76) et l'Aisne (02)\n
+    sont les départements qui ont le plus de maires. Ceux de la\n
+    petite couronne de l'Île-de-France (Seine-Saint-Denis,\n
+    Hauts-de-Seine, Val-de-Marne), les départements d'outre-mer et\n
+    le département de Paris sont ceux qui ont le moins de maires\n
+    (moins de 50 maires)."
+  )
+print(graphique_maires_departements)
+```
+
+### Professions exercées par les maires
+
+```{r}
+graphique_maires_professions <- table_maires %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_de_la_profession, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(
+    name = "Nombre d'élus",
+    breaks = c(0, 2000, 4000, 6000)
+  ) +
+  labs(
+    title = "20 premières professions les plus exercées par les maires", 
+    caption = "Presque rien à dire : les maires sont presque tous des\n
+    agriculteurs propriétaires d'exploitation ou des retraités."
+  )
+print(graphique_maires_professions)
+```
+
+
+Nos députés
+============
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_deputes_hommes <- table_deputes %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_deputes_femmes <- table_deputes %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_deputes_hommes <- nombre_deputes_hommes / (nombre_deputes_hommes + nombre_deputes_femmes)
+taux_deputes_femmes <- nombre_deputes_femmes / (nombre_deputes_hommes + nombre_deputes_femmes)
+
+table_deputes <- table_deputes %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_deputes %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_deputes %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_deputes_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont députés, soit",
+    format(
+      round(taux_deputes_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_deputes_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont députées, soit",
+    format(
+      round(taux_deputes_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Petite anecdote
+
+Saviez-vous que le député le plus vieux a 80 ans ? Et que la moyenne d'âge est estimée à 50 ans ?
+
+Row
+------------------
+
+### Comment s'appellent nos députés ?
+```{r}
+graphique_deputes_hommes <- table_deputes %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les députés hommes"
+  )
+print(graphique_deputes_hommes)
+```
+
+### Quels sont les noms les plus prisés parmi les députées ?
+```{r}
+graphique_deputes_femmes <- table_deputes %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les députées femmes"
+  )
+print(graphique_deputes_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de députés
+
+```{r}
+graphique_deputes_departements <- table_deputes %>% 
+  count(libelle_du_departement, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_du_departement, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de députés", 
+    caption = "Sans surprise, les départements du Nord et de Paris\n
+    ont le plus grand nombre de députés, avec respectivement 21\n
+    et 18 députés. Mais la Creuse, la Lozère et trois\n
+    départements d'outre-mer ont le moins de députés avec\n
+    seulement un député ! Alors qu'il y a en moyenne 5,35 députés\n
+    par département français, seuls 37 sont au-dessus de cette moyenne !"
+  )
+print(graphique_deputes_departements)
+```
+
+### Professions exercées par les députés
+
+```{r}
+graphique_deputes_professions <- table_deputes %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_de_la_profession, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premières professions les plus exercées par les députés", 
+    caption = "Les cadres du secteur privé, les fonctionnaires de catégorie\n
+    A et les industriels et chefs d'entreprise sont les plus nombreux\n
+    parmi les députés, et occupent 31 % des 577 existants en France."
+  )
+print(graphique_deputes_professions)
+```
+
+
+Nos sénateurs
+===============
+
+Row
+------------------
+
+### Nombre d'hommes
+
+```{r}
+nombre_senateurs_hommes <- table_senateurs %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'M') %>%
+  pull(n)
+nombre_senateurs_femmes <- table_senateurs %>%
+  count(code_sexe) %>%
+  filter(code_sexe == 'F') %>%
+  pull(n)
+taux_senateurs_hommes <- nombre_senateurs_hommes / (nombre_senateurs_hommes + nombre_senateurs_femmes)
+taux_senateurs_femmes <- nombre_senateurs_femmes / (nombre_senateurs_hommes + nombre_senateurs_femmes)
+
+table_senateurs <- table_senateurs %>%
+  mutate(
+    age = floor(
+      interval(start = date_de_naissance, end = today()) %>%
+        time_length(unit = "years")
+    )
+  )
+age_moyen_hommes <- round(table_senateurs %>%
+  filter(code_sexe == 'M') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+age_moyen_femmes <- round(table_senateurs %>%
+  filter(code_sexe == 'F') %>%
+  summarise(age_moyen = mean(age)), digits = 0
+)
+
+nombre_senateurs_hommes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "hommes qui sont sénateurs, soit",
+    format(
+      round(taux_senateurs_hommes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#007fff', icon = 'fa-male')
+```
+
+### Nombre de femmes
+
+```{r}
+nombre_senateurs_femmes %>%
+  format(trim = TRUE, big.mark = ' ', decimal.mark = ',') %>%
+  valueBox(caption = str_c(
+    "femmes qui sont sénatrices, soit",
+    format(
+      round(taux_senateurs_femmes * 100, digits = 1),
+      trim = TRUE,
+      big.mark = ' ',
+      decimal.mark = ','
+    ),
+    "%",
+    sep = ' '
+  ), color = '#ff007f', icon = 'fa-female')
+```
+
+Row
+------------------
+
+### Le saviez-vous ?
+
+Le sénateur le plus âgé a 81 ans. Et la moyenne d'âge est estimée à 61 ans !
+
+Row
+------------------
+
+### Comment s'appellent nos sénateurs ?
+```{r}
+graphique_senateurs_hommes <- table_senateurs %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'M') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les sénateurs hommes"
+  )
+print(graphique_senateurs_hommes)
+```
+
+### Quels sont les noms les plus prisés parmi les sénatrices ?
+```{r}
+graphique_senateurs_femmes <- table_senateurs %>% 
+  count(prenom_de_l_elu, code_sexe, sort = TRUE) %>%
+  filter(code_sexe == 'F') %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = prenom_de_l_elu, .x = n, .desc = FALSE),
+      y = n,
+      fill = 'blue'
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Prénom") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "Les 10 prénoms les plus fréquents chez les sénatrices femmes"
+  )
+print(graphique_senateurs_femmes)
+```
+
+
+Row
+------------------
+
+### Départements avec le plus de sénateurs
+
+```{r}
+graphique_senateurs_departements <- table_senateurs %>% 
+  count(libelle_du_departement, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_du_departement, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Département") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premiers départements avec le plus de sénateurs", 
+    caption = "Nous sommes d'accord pour dire que c'est un privilège\n
+    d'avoir plus de 5 sénateurs pour son département, privilège\n
+    accordé à 12 départements et aux \"Français de l'étranger\",\n
+    qui sont les grands gagnants. Notamment sur les territoires\n
+    d'outre-mer ou dans les territoires de montagne ou ruraux, on\n
+    peut remarquer un manque crucial de sénateurs ; 46 % des\n
+    départements français ont un ou deux sénateurs."
+  )
+print(graphique_senateurs_departements)
+```
+
+### Professions exercées par les sénateurs
+
+```{r}
+graphique_senateurs_professions <- table_senateurs %>% 
+  count(libelle_de_la_profession, sort = TRUE) %>%
+  slice(1:20) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(
+      x = fct_reorder(.f = libelle_de_la_profession, .x = n, .desc = FALSE),
+      y = n
+    ),
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_x_discrete(name = "Profession") +
+  scale_y_continuous(name = "Nombre d'élus") +
+  labs(
+    title = "20 premières professions les plus exercées par les sénateurs", 
+    caption = "Incroyable mais vrai : un grand nombre de sénateurs n'a\n
+    aucune profession déclarée ! Et beaucoup d'autres sont des\n
+    retraités ou des fonctionnaires de catégorie A !"
+  )
+print(graphique_senateurs_professions)
 ```
